@@ -1,7 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, Image } from 'react-native';
 import { Container } from './src/components/Container/Container';
+import { Button } from './src/components/Button/Button';
+import { Title } from './src/components/Title/Title';
+import { Plate } from './src/components/Plate/Plate';
+import { ImagemLogo } from './src/components/ImagemLogo/ImagemLogo';
 
 export default function App() {
   const [count, setCount] = useState(0)
@@ -23,53 +27,28 @@ export default function App() {
 
 
   return (
-    <Container style={styles.container}>
+    <Container>
 
-      <View>
+      <ImagemLogo source={require("./src/Imagens/math.png")}/>
+      <Title>
         <Text>Contador: {count}</Text>
-      </View>
+      </Title>
       
-      <View style={styles.view}>
-
-        <TouchableOpacity onPress={increment} style={styles.opcoes}>
+      <Plate>
+        <Button onPress={increment}>
           <Text>Incrementar</Text>
-        </TouchableOpacity>
+        </Button>
 
-        <TouchableOpacity onPress={deincrement} style={styles.opcoes}>
+        <Button onPress={deincrement}>
           <Text>Desencrementar</Text>
-        </TouchableOpacity>
+        </Button>
 
-        <TouchableOpacity onPress={zero} style={styles.opcoes}>
+        <Button onPress={zero}>
           <Text>zero</Text>
-        </TouchableOpacity>
-      </View>
+        </Button>
+      </Plate>
 
       <StatusBar style="auto" />
     </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 25,
-    flex: 0.8,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-  },
-  opcoes: {
-    borderWidth: 1,
-    borderColor: "red",
-    padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '90%'
-  },
-  view: {
-    flex: 0.5,
-    borderWidth: 1,
-    justifyContent: 'space-around',
-    width: '90%',
-    alignItems: 'center'
-  }
-});
